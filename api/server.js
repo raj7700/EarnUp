@@ -28,7 +28,11 @@ const connect = async () => {
 app.use(shouldSendSameSiteNone);
 app.use(cookieParser());
 app.use(
-  cors({ origin: "https://lucky-faun-e0731b.netlify.app", credentials: true })
+  cors({
+    origin:
+      "https://6465b8224f79443e4f0f94d0--incandescent-peony-df4453.netlify.app/",
+    credentials: true,
+  })
 );
 app.use(express.json());
 app.use("/api/auth", authRoute);
