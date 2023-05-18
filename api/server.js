@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin:
-      "https://6465b8224f79443e4f0f94d0--incandescent-peony-df4453.netlify.app/",
+      "https://6465b8224f79443e4f0f94d0--incandescent-peony-df4453.netlify.app",
     credentials: true,
   })
 );
