@@ -22,5 +22,5 @@ export const getUser = async (req, res) => {
     if(!user) return res.status(404).send("User not found");
     console.log(user)
    // console.log(user);
-    res.status(200).json(user);
+    res.status(200).send(user);
 }

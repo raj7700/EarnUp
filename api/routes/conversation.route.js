@@ -1,8 +1,11 @@
 import express from "express";
-import { deleteUser } from "../controller/user.controller.js";
-
+import { verifyToken } from "../middleware/jwt.js";
+import { getConversation, createConversation, getSingleConversation, updateConversation } from "../controller/conversation.controller.js";
 const router = express.Router();
 
-router.get("/test", deleteUser);
+router.get("/",verifyToken,getConversation);
+router.post("/",verifyToken,createConversation);
+router.get("/single/:id",verifyToken,getSingleConversation);
+router.put("/:id",verifyToken,updateConversation);
 
 export default router;

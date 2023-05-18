@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.scss";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import axios from "axios";
@@ -7,6 +8,7 @@ import axios from "axios";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [otpLogin , setOtpLogin] = useState(false);
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
@@ -42,6 +44,9 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
+        <Link to="/OtpSend" className="link">
+        <p>Login via Otp</p>
+        </Link>
         {error && error}
       </form>
     </div>

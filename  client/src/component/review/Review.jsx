@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import person from "../../assets/person.png";
 import newRequest from "../../utils/newRequest";
 import "./Review.scss";
 const Review = ({ review }) => {
@@ -10,7 +11,7 @@ const Review = ({ review }) => {
         return res.data;
       }),
   });
-
+  console.log(data);
   return (
     <div className="review">
       {isLoading ? (
@@ -19,11 +20,11 @@ const Review = ({ review }) => {
         "error"
       ) : (
         <div className="user">
-          <img className="pp" src={data.img || "/img/noavatar.jpg"} alt="" />
+          <img className="pp" src={data[0].img ||person} alt="" />
           <div className="info">
-            <span>{data.username}</span>
+            <span>{data[0].username}</span>
             <div className="country">
-              <span>{data.country}</span>
+              <span>{data[0]?.country}</span>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./Gig.scss";
 import { Slider } from "infinite-react-carousel/lib";
@@ -7,15 +6,15 @@ import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../component/reviews/Reviews";
 import person from "../../assets/person.png";
+import { useEffect } from "react";
 
 function Gig() {
   
   const { id } = useParams();
-
   const { isLoading, error, data } = useQuery({
     queryKey: ["gig"],
-    queryFn: () =>
-      newRequest.get(`/gigs/single/${id}`).then((res) => {
+    queryFn:  () =>
+       newRequest.get(`/gigs/single/${id}`).then((res) => {
         return res.data;
       }),
   });
@@ -28,25 +27,25 @@ function Gig() {
     data: dataUser,
   } = useQuery({
     queryKey: ["user"],
-    queryFn: () =>
-      newRequest.get(`/users/${userId}`).then((res) => {
+    queryFn:  () =>
+       newRequest.get(`/users/${userId}`).then((res) => {
         return res.data;
       }),
     enabled: !!userId,
   });
-  console.log(dataUser);
+  
+  if(data && dataUser)
   return (
-   
     <div className="gig">
       {isLoading ? (
-        "loading"
+        <p>loading</p>
       ) : error ? (
-        "Something went wrong!"
+        <p>Something went wrong!</p>
       ) : (
         <div className="container">
           <div className="left">
             <span className="breadcrumbs">
-              Fiverr {">"} Graphics & Design {">"}
+              Earnup!! {">"} Graphics & Design {">"}
             </span>
             <h1>{data?.title}</h1>
             {isLoadingUser ? (
@@ -55,11 +54,7 @@ function Gig() {
               "Something went wrong!"
             ) : (
               <div className="user">
-                <img
-                  className="pp"
-                  src={data?.img ||person}
-                  alt=""
-                />
+                <img className="pp" src={data?.img || person} alt="" />
                 <span>{dataUser?.username}</span>
                 {!isNaN(data?.totalStars / data?.starNumber) && (
                   <div className="stars">
@@ -68,7 +63,9 @@ function Gig() {
                       .map((item, i) => (
                         <img src="/img/star.png" alt="" key={i} />
                       ))}
-                    <span>{Math.round(data?.totalStars / data?.starNumber)}</span>
+                    <span>
+                      {Math.round(data?.totalStars / data?.starNumber)}
+                    </span>
                   </div>
                 )}
               </div>
@@ -166,10 +163,7 @@ function Gig() {
           </div>
         </div>
       )}
-              
     </div>
-            
-              
   );
 }
 

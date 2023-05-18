@@ -22,6 +22,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.2",
     "nodemon": "^2.0.22",
-    "should-send-same-site-none": "^2.0.5"
+    "should-send-same-site-none": "^2.0.5",
+    "stripe": "^12.4.0",
+    "twilio": "^4.10.0"
   }
 }

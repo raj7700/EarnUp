@@ -10,8 +10,12 @@ import Messages from "./pages/messages/Messages";
 import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
 import Login from "./pages/login/Login";
+import OtpSend from "./pages/login/OtpSend";
 import "./App.scss";
+import OtpVerify from "./pages/login/OtpVerify";
 import Register from "./pages/register/Register";
+import Pay from "./pages/pay/Pay";
+import Success from "./pages/success/Success";
 import {
   QueryClient,
   QueryClientProvider,
@@ -39,9 +43,18 @@ function App() {
       path: "/",
       element: <Layout />,
       children: [
+        
         {
           path: "/login",
           element: <Login />,
+        },
+        {
+          path: "/OtpSend",
+          element: <OtpSend />,
+        },
+        {
+          path: "/OtpVerify",
+          element: <OtpVerify/>,
         },
         {
           path: "/register",
@@ -78,6 +91,14 @@ function App() {
         {
           path: "/message/:id",
           element: <Message />,
+        },
+        {
+          path: "/pay/:id",
+          element: <Pay />,
+        },
+        {
+          path: "/success",
+          element: <Success />,
         },
       ],
     },
